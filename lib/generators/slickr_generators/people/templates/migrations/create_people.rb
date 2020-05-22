@@ -17,9 +17,11 @@ class CreatePeople < ActiveRecord::Migration[5.2]
         t.string :linkedin
         t.text :description
         t.boolean :published, null: false, default: false
+        t.datetime :discarded_at
 
         t.timestamps
       end
+      add_index :people, :discarded_at
     end
   end
 

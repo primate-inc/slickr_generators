@@ -18,7 +18,10 @@ ActiveAdmin.register Person do
     id_column
     column :first_name
     column :last_name
-    actions
+    actions defaults: false do |person|
+      item "Edit", edit_admin_person_path(person)
+      item "Delete", discard_admin_person_path(person)
+    end
   end
 
   show do |person|
@@ -96,6 +99,7 @@ ActiveAdmin.register Person do
   end
 
   controller do
+    include Slickr::SharedAdminController
     def permitted_params
       params.permit!
     end

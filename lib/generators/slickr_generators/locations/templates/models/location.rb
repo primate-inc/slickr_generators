@@ -2,6 +2,7 @@ class Location < ApplicationRecord
   # include Geokit::Geocoders
   acts_as_list column: :order
   acts_as_geolocated rescue ActiveAdmin::DatabaseHitDuringLoad
+  include Discard::Model
 
   extend FriendlyId
   friendly_id :name, use: %i[slugged finders]

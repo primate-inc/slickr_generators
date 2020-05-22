@@ -15,7 +15,10 @@ ActiveAdmin.register Location do
     id_column
     column :name
     column :city
-    actions
+    actions defaults: false do |location|
+      item "Edit", edit_admin_location_path(location)
+      item "Delete", discard_admin_location_path(location)
+    end
   end
 
   form do |f|
@@ -34,5 +37,8 @@ ActiveAdmin.register Location do
       input :email
     end
     actions
+  end
+  controller do
+    include Slickr::SharedAdminController
   end
 end

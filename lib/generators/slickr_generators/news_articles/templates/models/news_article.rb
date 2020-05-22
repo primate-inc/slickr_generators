@@ -6,6 +6,7 @@ class NewsArticle < ApplicationRecord
   include Slickr::Uploadable
   include Slickr::Metatagable
   include Slickr::Schedulable
+  include Discard::Model
 
   extend FriendlyId
 

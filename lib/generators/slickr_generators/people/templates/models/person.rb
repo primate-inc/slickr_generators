@@ -9,6 +9,7 @@ class Person < ApplicationRecord
   include Slickr::Uploadable
   include Slickr::Metatagable
   include Slickr::Previewable
+  include Discard::Model
   has_one_slickr_upload(:person_photo, :photo)
 
   validates :first_name, presence: true

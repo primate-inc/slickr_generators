@@ -57,7 +57,10 @@ ActiveAdmin.register NewsArticle do
     column 'Author', :admin_user do |news|
       news.admin_user.full_name
     end
-    actions
+    actions defaults: false do |article|
+      item "Edit", edit_admin_news_article_path(article)
+      item "Delete", discard_admin_news_article_path(article)
+    end
   end
 
   show do |news|
@@ -155,6 +158,7 @@ ActiveAdmin.register NewsArticle do
   end
 
   controller do
+    include Slickr::SharedAdminController
     def permitted_params
       params.permit!
     end

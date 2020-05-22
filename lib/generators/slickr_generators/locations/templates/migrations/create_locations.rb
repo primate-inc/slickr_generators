@@ -15,9 +15,11 @@ class CreateLocations < ActiveRecord::Migration[5.2]
         t.boolean :published, null: false, default: false
         t.decimal :latitude, precision: 10, scale: 6
         t.decimal :longitude, precision: 10, scale: 6
+        t.datetime :discarded_at
 
         t.timestamps
       end
+      add_index :locations, :discarded_at
     end
   end
 

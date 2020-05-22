@@ -13,9 +13,11 @@ class CreateNewsArticles < ActiveRecord::Migration[5.1]
         t.text :content
         t.date :date
         t.references :admin_user, foreign_key: true
+        t.datetime :discarded_at
 
         t.timestamps
       end
+      add_index :news_articles, :discarded_at
     end
   end
 
